@@ -58,4 +58,24 @@ class ChatbotMsnMsii2527ApplicationTests {
                 .andExpect(jsonPath("$.id").value(1));
     }
 
+    @Test
+    @WithMockUser(roles = {"ADMIN"})
+    void getUserWithNonExistingId_shouldReturn404() throws Exception {
+        mvc.perform(get("/user/99999"))
+        .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @WithMockUser(roles = {"USER"})
+    void callAskHistoryAllAsUser_shouldBeForbidden() throws Exception {
+        mvc.perform(get("/ask/history/all"))
+        .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @WithUserDetails("a@a")
+    void callAskHistoryAllAsAdmin_shouldBeOk() throws Exception {
+        mvc.perform(get("/ask/history/all"))
+        .andExpect(status().isOk());
+    }
 }
