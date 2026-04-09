@@ -4,8 +4,8 @@
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Annotation profile for evaljava" enabled="true">
-        <sourceOutputDir name="eval-java/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="eval-java/target/generated-test-sources/test-annotations" />
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
